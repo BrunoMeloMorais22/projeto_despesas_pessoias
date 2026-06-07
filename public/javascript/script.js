@@ -7,7 +7,6 @@ document.getElementById('expenseForm').addEventListener("submit", async(e) => {
         valor: Number(document.getElementById('valor').value),
         categoria: document.getElementById('categoria').value,
         data: document.getElementById('data').value,
-        data2: document.getElementById('sdad').value
     }
 
     const token = localStorage.getItem('token')
