@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Cadastro</title>
+</head>
+<body>
+    <h1>Preencha todos os campos</h1>
+
+    <form id="expenseForm">
+        <input type="text" id="descricao" placeholder="Descrição">
+
+        <input type="number" id="valor" placeholder="Valor" step="0.1">
+
+        <select id="categoria">
+            <option value="Alimentacao">Alimentação</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Outros">Outros</option>
+        </select>
+
+        <input type="date" id="data">
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <script src="../javascript/script.js"></script>
+</body>
+</html>
