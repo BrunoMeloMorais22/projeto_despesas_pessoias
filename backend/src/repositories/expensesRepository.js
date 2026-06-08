@@ -7,3 +7,7 @@ exports.createExpense = async (data) => {
         data
     })
 }
+
+exports.getAll = async () => {
+    return await prisma.Despesas.findMany()
+}

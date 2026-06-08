@@ -25,3 +25,9 @@ exports.expenses = async(descricao, valor, categoria, data) => {
     }
 }
 
+exports.getExpenses = async () => {
+
+    const expenses = await expensesRepository.getAll()
+
+    return expenses
+}
