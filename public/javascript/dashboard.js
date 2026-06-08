@@ -6,7 +6,6 @@ async function carregarDashboard() {
 
     const despesas = await response.json()
 
-    // TABELA
     const tabela = document.getElementById('tabelaExpenses')
 
     tabela.innerHTML = ''
@@ -22,7 +21,6 @@ async function carregarDashboard() {
         `
     })
 
-    // GRÁFICO
     const categorias = {}
 
     despesas.forEach(despesa => {
