@@ -16,7 +16,7 @@ async function carregarDashboard() {
                 <td>${despesa.descricao}</td>
                 <td>${despesa.valor}</td>
                 <td>${despesa.categoria}</td>
-                <td>${despesa.data}</td>
+                <td>${new Date(despesa.data).toLocaleDateString('pt-BR')}</td>
             </tr>
         `
     })

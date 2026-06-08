@@ -9,18 +9,20 @@ document.getElementById('expenseForm').addEventListener("submit", async(e) => {
         data: document.getElementById('data').value,
     }
 
-    const token = localStorage.getItem('token')
-
     const response = await fetch('http://localhost:3000/auth/expenses', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify(despesas)
     });
 
-    const data = await response.json();
-    alert(data.message)
+    console.log("STATUS:", response.status)
+
+const data = await response.json()
+console.log("DATA:", data)
+
+    document.getElementById('mensagem').textContent =
+    data.message
 })
 

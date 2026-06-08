@@ -1,11 +1,11 @@
 const express = require('express')
-const userService = require('../service/userService')
+const expenseService = require('../service/expenseService')
 
 exports.expenses = async (req, res) => {
     try{
         const { descricao, valor, categoria, data } = req.body
 
-        const result = await userService.expenses(
+        const result = await expenseService.expenses(
             descricao,
             valor, 
             categoria, 
@@ -24,7 +24,7 @@ exports.expenses = async (req, res) => {
 
 exports.getExpenses = async(req, res) => {
     try{
-        const result = await userService.getExpenses()
+        const result = await expenseService.getExpenses()
 
         res.status(200).json(result)
     } catch(error) {
