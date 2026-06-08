@@ -20,3 +20,7 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+#expenseChart {
+    width: 500px !important;
+    height: 500px !important;
+}
