@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/BrunoMeloMorais22/projeto_despesas_pessoias#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "@prisma/client": "^5.22.0",
+    "bcrypt": "^6.0.0",
+    "express": "^5.2.1",
+    "prisma": "^5.22.0"
   }
 }

@@ -11,7 +11,7 @@ document.getElementById('expenseForm').addEventListener("submit", async(e) => {
 
     const token = localStorage.getItem('token')
 
-    const response = await fetch('http://localhost:3000/expenses', {
+    const response = await fetch('http://localhost:3000/auth/expenses', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -21,6 +21,6 @@ document.getElementById('expenseForm').addEventListener("submit", async(e) => {
     });
 
     const data = await response.json();
-    alert(data.mensagem)
+    alert(data.message)
 })
 
