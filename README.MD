@@ -114,8 +114,8 @@ Este projeto foi desenvolvido para aprimorar conhecimentos em:
 
 ## Autor
 
-Bruno Melo
+Bruno Melo de Morais
 
-LinkedIn: Adicione seu perfil aqui
+LinkedIn: [https://www.linkedin.com/in/brunomoraisdevv/]
 
-GitHub: Adicione seu perfil aqui
+GitHub: [https://github.com/BrunoMeloMorais22]
