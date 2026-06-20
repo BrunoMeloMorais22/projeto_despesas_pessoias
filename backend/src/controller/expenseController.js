@@ -22,6 +22,14 @@ exports.expenses = async (req, res) => {
     }
 }
 
+exports.findById = async (req, res) => {
+    const id = req.params.id
+
+    const despesa = await expenseService.findById(id)
+
+    return res.json(despesa)
+}
+
 exports.getExpenses = async(req, res) => {
     try{
         const result = await expenseService.getExpenses()
@@ -32,4 +40,26 @@ exports.getExpenses = async(req, res) => {
             message: error.message
         })
     }
+}
+
+exports.deleteExpense = async(req, res) => {
+    const { id } = req.params.id
+
+    await expenseService.deleteExpenses(id)
+    
+    res.status(200).json({
+        message: "Despesa excluída"
+    })
+}
+
+exports.updateExpenses = async(req, res) => {
+
+    const { id } = Number(req.params.id)
+
+    const expense = await expenseService.updateExpense(
+        id,
+        req.body
+    )
+
+    res.status(200).json(expense)
 }
