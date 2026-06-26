@@ -3,16 +3,24 @@ const app = express()
 const path = require('path')
 const expenseRoutes = require('./backend/src/routes/expenseRoutes')
 const expenseController = require('./backend/src/controller/expenseController')
+const cors = require('cors')
+
+app.use(cors({
+    origin: "https://projeto-despesas-pessoias.onrender.com"
+}))
 
 app.use(express.json())
 
 app.use('/auth', expenseRoutes)
+
+
 
 app.get('/', (req, res) => {
     res.status(200).json({
         message: "API rodando"
     })
 })
+
 
 app.get("/auth/expenses/:id", expenseController.findById)
 

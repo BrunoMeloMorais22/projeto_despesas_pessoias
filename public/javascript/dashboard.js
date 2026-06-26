@@ -1,13 +1,14 @@
-
 let expenseChart
 let despesaEditando = null
+
+const API_URL = "https://projeto-despesas-pessoias.onrender.com"
 
 async function carregarDashboard() {
 
     console.log('Dashboard carregado')
 
     const response = await fetch(
-        'http://localhost:3000/auth/expenses'
+        `${API_URL}/auth/expenses`
     )
 
     const despesas = await response.json()
@@ -55,7 +56,7 @@ async function carregarDashboard() {
 
 async function excluirDespesa(id) {
     const response = await fetch(
-        `http://localhost:3000/auth/expenses/${id}`,{
+        `${API_URL}/auth/expenses/${id}`, {
             method: 'DELETE'
         }
     )
@@ -67,9 +68,8 @@ async function excluirDespesa(id) {
 
 async function editarDespesa(id){
 
-    const response = await fetch(`http://localhost:3000/auth/expenses/${id}`)
+    const response = await fetch(`${API_URL}/auth/expenses/${id}`)
     const despesa = await response.json()
-
 
     document.getElementById('descricao').value = despesa.descricao
     document.getElementById('valor').value = despesa.valor
@@ -85,7 +85,7 @@ function fecharModal() {
 }
 
 async function salvarEdicao() {
-    await fetch(`http://localhost:3000/auth/expenses/${despesaEditando}`, {
+    await fetch(`${API_URL}/auth/expenses/${despesaEditando}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
