@@ -1,4 +1,6 @@
 
+const API_URL = "https://projeto-despesas-pessoias.onrender.com"
+
 document.getElementById('expenseForm').addEventListener("submit", async(e) => {
     e.preventDefault();
 
@@ -9,7 +11,7 @@ document.getElementById('expenseForm').addEventListener("submit", async(e) => {
         data: document.getElementById('data').value,
     }
 
-    const response = await fetch('http://localhost:3000/auth/expenses', {
+    const response = await fetch(`${API_URL}/auth/expenses`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
