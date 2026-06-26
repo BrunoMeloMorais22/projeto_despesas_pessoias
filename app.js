@@ -18,5 +18,16 @@ app.get("/auth/expenses/:id", expenseController.findById)
 
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", '/public/html/index.html'))
+})
+
+app.get('/despesas', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "/public/html/despesas.html"))
+})
+
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "/public/html/dashboard.html"))
+})
 
 module.exports = app
