@@ -43,7 +43,7 @@ exports.getExpenses = async(req, res) => {
 }
 
 exports.deleteExpense = async(req, res) => {
-    const { id } = req.params.id
+    const id  = Number(req.params.id)
 
     await expenseService.deleteExpenses(id)
     
@@ -54,7 +54,7 @@ exports.deleteExpense = async(req, res) => {
 
 exports.updateExpenses = async(req, res) => {
 
-    const { id } = Number(req.params.id)
+    const id = Number(req.params.id)
 
     const expense = await expenseService.updateExpense(
         id,

@@ -82,3 +82,12 @@ button:hover {
     color: #6b7280;
     margin-bottom: 25px;
 }
+
+#link {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+#link:hover{
+    text-decoration: underline;
+}
