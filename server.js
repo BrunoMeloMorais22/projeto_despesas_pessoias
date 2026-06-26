@@ -3,12 +3,16 @@ const path = require("path");
 
 const app = express();
 
+const expensesRoutes = require('./backend/src/routes/expenseRoutes')
+
 const PORT = process.env.PORT || 3000;
 
-// servir arquivos estáticos (CSS, JS, imagens)
+app.use(express.json());
+
+app.use("/auth", expensesRoutes)
+
 app.use(express.static(path.join(__dirname, "public")));
 
-// rota principal
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "html", "index.html"));
 });
