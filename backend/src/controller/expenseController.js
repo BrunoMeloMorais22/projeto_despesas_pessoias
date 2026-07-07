@@ -27,14 +27,21 @@ exports.expenses = async (req, res) => {
 }
 
 exports.findById = async (req, res) => {
-    const id = req.params.id
+    try {
+        const id = req.params.id;
+        const userId = req.user.id;
 
-    const userId = req.user.id
+        const despesa = await expenseService.findById(id, userId);
 
-    const despesa = await expenseService.findById(id, userId)
+        return res.json(despesa);
+    } catch (error) {
+        console.error(error);
 
-    return res.json(despesa)
-}
+        return res.status(error.statusCode || 500).json({
+            message: error.message
+        });
+    }
+};
 
 exports.getExpenses = async(req, res) => {
     try{
