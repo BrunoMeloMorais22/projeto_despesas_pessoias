@@ -3,19 +3,23 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
 exports.createExpense = async (data) => {
-    return await prisma.Despesas.create({
+    return await prisma.despesa.create({
         data
     })
 }
 
-exports.getAll = async () => {
-    return await prisma.Despesas.findMany()
+exports.getAll = async (userId) => {
+    return await prisma.despesa.findMany({
+        where: {
+            userId
+        }
+    })
 }
 
 
 exports.findById = async(id) => {
 
-    return await prisma.Despesas.findUnique({
+    return await prisma.despesa.findUnique({
         where: {
             id: Number(id)
         }
@@ -25,7 +29,7 @@ exports.findById = async(id) => {
 
 exports.update = async(id, data) => {
 
-    return await prisma.Despesas.update({
+    return await prisma.despesa.update({
         where: {
             id: Number(id)
         },
@@ -41,7 +45,7 @@ exports.update = async(id, data) => {
 
 exports.deleteExpense = async(id) => {
 
-    return await prisma.Despesas.delete({
+    return await prisma.despesa.delete({
         where: {
             id: Number(id)
         }

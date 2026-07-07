@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const expensesRepository = require('../repositories/expensesRepository')
 const AppError = require('../utils/AppError')
 
-exports.expenses = async(descricao, valor, categoria, data) => {
+exports.expenses = async(descricao, valor, categoria, data, userId) => {
     if(!descricao || !valor || !categoria || !data){
         throw new Error('Preencha todos os campos')
     }
@@ -16,7 +16,8 @@ exports.expenses = async(descricao, valor, categoria, data) => {
         descricao,
         valor,
         categoria,
-        data: new Date(data)
+        data: new Date(data),
+        userId
     })
 
     return{
@@ -25,16 +26,20 @@ exports.expenses = async(descricao, valor, categoria, data) => {
     }
 }
 
-exports.getExpenses = async () => {
-
-    const expenses = await expensesRepository.getAll()
+exports.getExpenses = async (userId) => {
+    const expenses = await expensesRepository.getAll(userId)
 
     return expenses
 }
 
-exports.updateExpense = async(id, data) => {
+exports.updateExpense = async(id, userId) => {
 
     const expense = await expensesRepository.findById(id)
+
+    if(expense.userId !== userId){
+        throw new AppError("Não autorizado", 403);
+        
+    }
 
     if(!expense){
         throw new AppError(
@@ -49,28 +54,31 @@ exports.updateExpense = async(id, data) => {
     )
 }
 
-exports.findById = async (id) => {
+exports.findById = async (id, userId) => {
+    const despesa = await prisma.despesa.findUnique({
+        where: {
+            id: Number(id)
+        }
+    });
 
-    if (!id) {
-        throw new Error("ID é obrigatório")
+    if (!despesa || despesa.userId !== userId) {
+        throw new AppError("Despesa não encontrada", 404);
     }
 
-    const despesa = await expensesRepository.findById(id)
+    return despesa;
+};
 
-    return despesa
-}
+exports.deleteExpenses = async (id, userId) => {
 
-exports.deleteExpenses = async(id) => {
+    const expense = await expensesRepository.findById(id);
 
-    const expense = await expensesRepository.findById(id)
-
-    if(!expense){
-        throw new AppError(
-            'Despesa não encontrada',
-            404
-        )
+    if (!expense) {
+        throw new AppError("Despesa não encontrada", 404);
     }
 
-    await expensesRepository.deleteExpense(id)
+    if (expense.userId !== userId) {
+        throw new AppError("Não autorizado", 403);
+    }
 
-}
+    await expensesRepository.deleteExpense(id);
+};

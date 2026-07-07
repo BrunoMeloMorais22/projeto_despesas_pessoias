@@ -1,29 +1,44 @@
 const express = require('express')
-const app = express()
 const path = require('path')
-const expenseRoutes = require('./backend/src/routes/expenseRoutes')
-const expenseController = require('./backend/src/controller/expenseController')
 const cors = require('cors')
 
+const expenseRoutes = require('./backend/src/routes/expenseRoutes')
+const userRoutes = require('./backend/src/routes/userRoutes')
+const expenseController = require('./backend/src/controller/expenseController')
+
+const app = express()
+
 app.use(cors({
-    origin: "https://projeto-despesas-pessoias.onrender.com"
+    origin: "http://localhost:3000"
 }))
 
 app.use(express.json())
 
 app.use('/auth', expenseRoutes)
-
-
-app.get('/', (req, res) => {
-    res.status(200).json({
-        message: "API rodando"
-    })
-})
-
-
-app.get("/auth/expenses/:id", expenseController.findById)
+app.use('/users', userRoutes)
 
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'html', 'index.html'))
+})
+
+app.get('/despesas', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'html', 'despesas.html'))
+})
+
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'html', 'dashboard.html'))
+})
+
+app.get('/cadastro', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'html', 'cadastro.html'))
+})
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'html', 'login.html'))
+})
+
+app.get('/auth/expenses/:id', expenseController.findById)
 
 module.exports = app

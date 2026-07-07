@@ -4,9 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <a href="/despesas">Cadastrar despesa</a>
-    <a href="/dashboard">Ver dashboard</a>
+    <header>
+        <h1>Controle de despesas pessoais</h1>
+        <p>Organize suas finanças de forma simples e prática. Acompanhe suas receitas e despesas, visualize seus gastos e tenha mais controle sobre seu dinheiro.</p>
+    </header>
+
+    <div id="naoLogado" class="button">
+        <a href="/cadastro"><button>Criar conta</button></a>
+        <a href="/login"><button>Fazer login</button></a>
+    </div>
+
+    <div id="logado" class="button" style="display: none;">
+        <a href="/despesas"><button>Cadastrar despesa</button></a>
+        <a href="/dashboard"><button>Dashboard</button></a>
+        <button id="relatorio">Solicitar relatório</button>
+        <button id="logout">Sair</button>
+    </div>
+
+    <section id="beneficios">
+    <div>
+        <h2>📊 Dashboard</h2>
+        <p>Visualize seus gastos por categoria.</p>
+    </div>
+
+    <div>
+        <h2>💵 Controle Financeiro</h2>
+        <p>Cadastre receitas e despesas rapidamente.</p>
+    </div>
+
+    <div>
+        <h2>📈 Relatórios</h2>
+        <p>Veja a evolução dos seus gastos.</p>
+    </div>
+</section>
+
+<script src="../javascript/index.js"></script>
 </body>
 </html>

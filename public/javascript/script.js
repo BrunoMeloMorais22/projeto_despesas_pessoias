@@ -1,5 +1,5 @@
 
-const API_URL = "https://projeto-despesas-pessoias.onrender.com"
+const API_URL = "http://localhost:3000"
 
 document.getElementById('expenseForm').addEventListener("submit", async(e) => {
     e.preventDefault();
@@ -8,13 +8,16 @@ document.getElementById('expenseForm').addEventListener("submit", async(e) => {
         descricao: document.getElementById('descricao').value,
         valor: Number(document.getElementById('valor').value),
         categoria: document.getElementById('categoria').value,
-        data: document.getElementById('data').value,
+        data: document.getElementById('data').value
     }
+
+    const token = localStorage.getItem("token");
 
     const response = await fetch(`${API_URL}/auth/expenses`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify(despesas)
     });
