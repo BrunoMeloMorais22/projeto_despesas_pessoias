@@ -62,7 +62,7 @@ exports.deleteExpense = async(req, res) => {
 
     const userId = req.user.id
 
-    await expenseService.deleteExpenses(id)
+    await expenseService.deleteExpenses(id, userId)
     
     res.status(200).json({
         message: "Despesa excluída"
