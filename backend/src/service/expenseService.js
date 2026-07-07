@@ -3,7 +3,9 @@ const bcrypt = require('bcrypt')
 const expensesRepository = require('../repositories/expensesRepository')
 const AppError = require('../utils/AppError')
 
-const prisma = new PrismaClient();
+const { PrismaClient } = require('@prisma/client')
+
+const prisma = new PrismaClient()
 
 exports.expenses = async(descricao, valor, categoria, data, userId) => {
     if(!descricao || !valor || !categoria || !data){
