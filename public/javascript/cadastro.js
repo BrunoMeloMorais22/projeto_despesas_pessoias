@@ -1,5 +1,5 @@
 
-const API_URL = "http://localhost:3000"
+const API_URL = "https://projeto-despesas-pessoias.onrender.com"
 
 document.getElementById("cadastroForm").addEventListener('submit', async(e) => {
     e.preventDefault()

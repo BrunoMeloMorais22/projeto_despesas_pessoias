@@ -9,7 +9,7 @@ const expenseController = require('./backend/src/controller/expenseController')
 const app = express()
 
 app.use(cors({
-    origin: "http://localhost:3000"
+    origin: "https://projeto-despesas-pessoias.onrender.com"
 }))
 
 app.use(express.json())
