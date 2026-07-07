@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt')
 const expensesRepository = require('../repositories/expensesRepository')
 const AppError = require('../utils/AppError')
 
+const prisma = new PrismaClient();
+
 exports.expenses = async(descricao, valor, categoria, data, userId) => {
     if(!descricao || !valor || !categoria || !data){
         throw new Error('Preencha todos os campos')
@@ -32,7 +34,7 @@ exports.getExpenses = async (userId) => {
     return expenses
 }
 
-exports.updateExpense = async(id, userId) => {
+exports.updateExpense = async(id, data, userId) => {
 
     const expense = await expensesRepository.findById(id)
 
