@@ -24,7 +24,7 @@ document.getElementById("cadastroForm").addEventListener('submit', async(e) => {
 
         setTimeout(() => {
             window.location.href = "/"
-        }, 2000)
+        })
         
     } else {
         mensagem.textContent = resultado.message
