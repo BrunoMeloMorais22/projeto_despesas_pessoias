@@ -16,18 +16,24 @@ document.getElementById("cadastroForm").addEventListener('submit', async(e) => {
         body: JSON.stringify(dados)
     })
 
-    const resultado = await response.json()
+    const resultado = await response.json();
 
-    if (response.ok) {
-        mensagem.textContent = resultado.message
-        mensagem.style.color = "green"
+if (response.ok) {
+    mensagem.textContent = resultado.message;
+    mensagem.style.color = "green";
 
-        setTimeout(() => {
-            window.location.href = "/"
-        })
-        
+    setTimeout(() => {
+        window.location.href = "/";
+    }, 1500);
+
+} else {
+
+    if (resultado.errors) {
+        mensagem.innerHTML = resultado.errors.join("<br>");
     } else {
-        mensagem.textContent = resultado.message
-        mensagem.style.color = "red"
+        mensagem.textContent = resultado.message;
     }
+
+    mensagem.style.color = "red";
+}
 })

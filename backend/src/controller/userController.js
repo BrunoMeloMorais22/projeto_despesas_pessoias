@@ -21,31 +21,42 @@ exports.register = async(req, res) => {
     }
 
     catch (error) {
-    console.error(error);
-    res.status(error.statusCode || 500).json({
+    if (error.issues) {
+        return res.status(400).json({
+            errors: error.issues.map(issue => issue.message)
+        });
+    }
+
+    return res.status(500).json({
         message: error.message
     });
 }
 }
 
 exports.login = async(req, res) => {
-    try{
+    try {
 
-        loginSchema.parse(req.body)
+        loginSchema.parse(req.body);
 
-        const { email, senha } = req.body
+        const { email, senha } = req.body;
 
         const result = await userService.login(
-            email, 
+            email,
             senha
-        )
+        );
 
-        return res.status(200).json(result)
-    }
+        return res.status(200).json(result);
 
-    catch(error) {
-        return res.status(500).json({
-            message: `${error}`
-        })
+    } catch (error) {
+
+        if (error.issues) {
+            return res.status(400).json({
+                errors: error.issues.map(issue => issue.message)
+            });
+        }
+
+        return res.status(error.statusCode || 500).json({
+            message: error.message
+        });
     }
 }
