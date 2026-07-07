@@ -78,23 +78,33 @@ async function excluirDespesa(id) {
     }   
 }
 
-async function editarDespesa(id){
+async function editarDespesa(id) {
 
     const response = await fetch(`${API_URL}/auth/expenses/${id}`, {
         headers:{
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
         }
-    })
-    const despesa = await response.json()
+    });
 
-    document.getElementById('descricao').value = despesa.descricao
-    document.getElementById('valor').value = despesa.valor
-    document.getElementById('categoria').value = despesa.categoria
-    document.getElementById('data').value = despesa.data.split('T')[0]
-    despesaEditando = id
+    const despesa = await response.json();
 
-    document.getElementById('modal').style.display = 'block'
+    console.log(response.status);
+    console.log(despesa);
+
+    if (!response.ok) {
+        alert(despesa.message || "Erro ao buscar despesa");
+        return;
+    }
+
+    document.getElementById('descricao').value = despesa.descricao;
+    document.getElementById('valor').value = despesa.valor;
+    document.getElementById('categoria').value = despesa.categoria;
+    document.getElementById('data').value = despesa.data.split('T')[0];
+
+    despesaEditando = id;
+
+    document.getElementById('modal').style.display = 'block';
 }
 
 function fecharModal() {
