@@ -58,3 +58,9 @@ exports.login = async(email, senha) => {
         token
     }
 }
+
+exports.buscarPerfil = async(id) => {
+    const usuario = await userRepository.findById(id)
+
+    return usuario
+}

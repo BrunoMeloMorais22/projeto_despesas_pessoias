@@ -3,8 +3,8 @@ const userService = require('../service/userService')
 const { registerSchema } = require('../validators/userValidator')
 const { loginSchema } = require('../validators/userValidator')
 
+
 exports.register = async(req, res) => {
-    console.log("Entrou no register");
     try{
 
         registerSchema.parse(req.body)
@@ -58,5 +58,17 @@ exports.login = async(req, res) => {
         return res.status(error.statusCode || 500).json({
             message: error.message
         });
+    }
+}
+
+exports.perfil = async(req, res) => {
+    try{
+        const usuario = await userService.buscarPerfil(req.user.id)
+
+        res.json(usuario)
+    } catch(error) {
+        res.status(500).json({
+            mensagem: "Erro ao buscar perfil"
+    })
     }
 }

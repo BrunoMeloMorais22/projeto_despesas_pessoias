@@ -1,6 +1,7 @@
 const { PrismaClient } = require('@prisma/client')
 
 
+
 const prisma = new PrismaClient()
 
 exports.createUser = async(data) => {
@@ -16,3 +17,16 @@ exports.findByEmail = async(email) => {
         }
     })
 } 
+
+exports.findById = async(id) => {
+    return await prisma.usuario.findUnique({
+        where: {
+            id: Number(id)
+        },
+
+        select: {
+            nome: true,
+            email: true
+        }
+    })
+}

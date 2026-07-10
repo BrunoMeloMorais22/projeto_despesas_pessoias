@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montenegrin+Gothic+One&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Merriweather", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
 }
 
 body {
@@ -12,6 +17,7 @@ body {
 }
 
 header {
+    position: relative;
     text-align: center;
     padding: 80px 20px 50px;
 }
@@ -94,4 +100,89 @@ header p {
 #beneficios div p {
     color: #666;
     line-height: 1.6;
+}
+
+.sidebar {
+    position: fixed;
+    right: -300px;
+    padding: 10px;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.profile-button {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.profile-button img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #2563eb;
+}
+
+
+.profile-info > img{
+    width: 50%;
+    height: 50%;
+    margin-left: 75px;
+}
+
+@media (max-width: 768px) {
+
+    header h1{
+        font-size: 2rem;
+    }
+
+    header p{
+        font-size: .95rem;
+    }
+
+    .button{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button button{
+        width: 90%;
+    }
+
+    .profile-button{
+        top: 15px;
+        right: 15px;
+    }
+
+    .profile-button img{
+        width: 40px;
+        height: 40px;
+    }
+
+    .sidebar{
+        width: 100%;
+        right: -100%;
+    }
+
+    .sidebar.active{
+        right: 0;
+    }
+
+    .profile-info > img{
+        width: 150px;
+        height: 150px;
+        margin: 30px auto;
+        display: block;
+    }
+
 }

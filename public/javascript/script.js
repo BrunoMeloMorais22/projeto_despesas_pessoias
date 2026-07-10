@@ -1,5 +1,5 @@
 
-const API_URL = "https://projeto-despesas-pessoias.onrender.com"
+const API_URL = "http://localhost:3000"
 
 document.getElementById('expenseForm').addEventListener("submit", async(e) => {
     e.preventDefault();
@@ -22,12 +22,9 @@ document.getElementById('expenseForm').addEventListener("submit", async(e) => {
         body: JSON.stringify(despesas)
     });
 
-    console.log("STATUS:", response.status)
+    const data = await response.json()
 
-const data = await response.json()
-console.log("DATA:", data)
-
-    document.getElementById('mensagem').textContent =
-    data.message
+    document.getElementById('mensagem').textContent = data.message
+    
 })
 

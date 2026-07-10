@@ -1,3 +1,5 @@
+const API_URL = "http://localhost:3000"
+
 const token = localStorage.getItem("token");
 
 const naoLogado = document.getElementById("naoLogado");
@@ -15,3 +17,24 @@ document.getElementById("logout").addEventListener("click", () => {
     localStorage.removeItem("token");
     window.location.reload();
 });
+
+function openSidebar(){
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+async function carregarPerfil() {
+    const token = localStorage.getItem('token');
+
+    const response = await fetch(`${API_URL}/users/perfil`, {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    });
+
+    const usuario = await response.json();
+
+    document.getElementById("nomeUsuario").innerHTML = usuario.nome;
+    document.getElementById("emailUsuario").innerHTML = usuario.email;
+}
+
+carregarPerfil()

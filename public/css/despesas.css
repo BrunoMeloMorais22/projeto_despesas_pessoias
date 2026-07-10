@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montenegrin+Gothic+One&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
+    font-family: "Merriweather", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
 }
 
 body {
@@ -85,9 +91,4 @@ button:hover {
 
 #link {
     text-decoration: none;
-    color: rgb(0, 0, 0);
-}
-
-#link:hover{
-    text-decoration: underline;
 }
