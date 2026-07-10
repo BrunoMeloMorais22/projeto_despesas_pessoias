@@ -4,7 +4,8 @@ let expenseChart
 let despesaEditando = null
 const token = localStorage.getItem("token");
 
-const API_URL = "http://localhost:3000"
+
+const API_URL = "https://projeto-despesas-pessoias.onrender.com"
 
 async function carregarDashboard() {
 
