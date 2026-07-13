@@ -72,3 +72,15 @@ exports.perfil = async(req, res) => {
     })
     }
 }
+
+exports.delete = async(req, res) => {
+    try{
+        const usuario = await userService.delete(req.user.id)
+
+        res.json(usuario)
+    }
+    catch(error) {
+        console.log(error)
+        res.status(404).json(error)
+    }
+}

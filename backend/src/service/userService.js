@@ -64,3 +64,7 @@ exports.buscarPerfil = async(id) => {
 
     return usuario
 }
+
+exports.delete = async(id) => {
+    return await userRepository.delete(id)
+}

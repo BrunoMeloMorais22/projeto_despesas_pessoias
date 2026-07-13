@@ -30,3 +30,18 @@ exports.findById = async(id) => {
         }
     })
 }
+
+exports.delete = async(id) => {
+    await prisma.despesa.deleteMany({
+        where: {
+            userId: Number(id)
+        }
+    });
+
+    return prisma.usuario.delete({
+        where:{
+            id: Number(id)
+        }
+    })
+}
+
